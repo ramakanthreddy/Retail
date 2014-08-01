@@ -16,7 +16,7 @@ Create manager role in tomcat-user.xml file as below:
 
 Step 2:
 
-add the followin tags under <servers> in settings.xml file
+add the following tags under <servers> in settings.xml file
 
 path to settings.xml file:
 
@@ -27,3 +27,7 @@ c:/users/username/.m2/settings.xml
 	<username>tomcat</username>
 	<password>tomcat</password>
         </server>
+        
+        Commands:
+        tomcat:deploy
+        tomcat:redeploy
