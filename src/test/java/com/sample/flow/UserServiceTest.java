@@ -19,8 +19,8 @@ public class UserServiceTest {
 	boolean result = false;
 	
 	UserVO userVO = new UserVO();
-	userVO.setUsername("test");
-	userVO.setPassword("test");
+	userVO.setUsername("test1");
+	userVO.setPassword("test1");
 	try {
 		result = userService.addUserIntoSystem(userVO);
 	} catch (UserAlreadyExitsException e) {

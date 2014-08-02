@@ -2,7 +2,6 @@ package com.sample.flow;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,10 +12,8 @@ public class BaseDao<T> {
 	
 	public void addObject(T t) throws DaoException{
 		
-		Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
+		Session session = sessionFactory.getCurrentSession();
 		session.save(t);
-		transaction.commit();
 	}
 	
 	
