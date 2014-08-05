@@ -4,6 +4,7 @@ Retail
 This is a sample application for retail shop,It may not suitable for all products but I can be extended as and when required.
 
 Steps to deploy application into tomcat through eclipse.
+This configuration supports only tomcat6 .
 
 Step 1:
 
