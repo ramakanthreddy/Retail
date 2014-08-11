@@ -3,13 +3,14 @@ package com.javahome.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Repository;
+@Repository
 public abstract class BaseDao<T> {
 	
 	 protected abstract Class<T> getPersistentClass();
 	 
-	 @Autowired
-	 private SessionFactory sessionFactory;
+	@Autowired
+	 protected SessionFactory sessionFactory;
 	 
 	 protected void addEntity(T t){
 		 
