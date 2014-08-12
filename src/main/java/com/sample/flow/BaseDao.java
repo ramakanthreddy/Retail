@@ -14,6 +14,7 @@ public class BaseDao<T> {
 		
 		Session session = sessionFactory.getCurrentSession();
 		session.save(t);
+		
 	}
 	
 	

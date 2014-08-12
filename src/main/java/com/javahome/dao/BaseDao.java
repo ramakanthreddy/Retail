@@ -4,6 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.javahome.web.vo.UserVO;
+import com.sample.flow.UserEntity;
+
 public abstract class BaseDao<T> {
 	
 	 protected abstract Class<T> getPersistentClass();
@@ -29,12 +32,12 @@ public abstract class BaseDao<T> {
 		 session.update(t);
 	 }
 	 
+
+	 
 	 @SuppressWarnings("unchecked")
 	protected T findById(int id) {
 		 Session session = sessionFactory.getCurrentSession();
 		 return (T) session.load(getPersistentClass(), id);
 	 }
-	 
-	
 
 }
