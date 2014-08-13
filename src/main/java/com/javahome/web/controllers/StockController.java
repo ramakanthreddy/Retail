@@ -15,8 +15,7 @@ import com.javahome.web.vo.StockVO;
 @Controller
 public class StockController {
 
-	@Autowired
-	private StockAddService stockAddService;
+
 	@RequestMapping(value="/addStock",method=RequestMethod.GET)
 public String addStock(Model model){
 		StockVO stockvo = new StockVO();
@@ -27,9 +26,7 @@ public String addStock(Model model){
 }
 	@RequestMapping(value = "/addStock", method = RequestMethod.POST)
 	public String addStock(@ModelAttribute("stockvo") StockVO stockvo) {
-		
-		
-	stockAddService.StockAdd(stockvo);
+
 		return "addStock";
 	}
 }
