@@ -12,8 +12,6 @@
 <body>
 <h3>hello everyone</h3>
 
-<%
-UserVO uservo = new UserVO();
-out.println(uservo.getUsersname()); %>
+
 </body>
 </html>

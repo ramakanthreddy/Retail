@@ -47,7 +47,7 @@
 		<property name="order" value="1"></property>
 	</bean>
  -->
-	 <bean id="dataSource"
+	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>

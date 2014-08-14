@@ -2,6 +2,7 @@ package com.javahome.dao.entity;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,8 +17,8 @@ import javax.persistence.Table;
 @Table(name="role")
 public class RoleEntity {
 	@Id
-	@SequenceGenerator(name="roleIdSeq",sequenceName="roleIdSeq")
-	@GeneratedValue(generator="roleIdSeq",strategy=GenerationType.SEQUENCE)
+/*	@SequenceGenerator(name="roleIdSeq",sequenceName="roleIdSeq")
+	@GeneratedValue(generator="roleIdSeq",strategy=GenerationType.SEQUENCE)*/
 	private int roleId;
 	@Column(name="role_type")
 	private String roleType;

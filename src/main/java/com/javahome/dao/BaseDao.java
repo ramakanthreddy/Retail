@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 @Repository
@@ -16,19 +15,19 @@ public abstract class BaseDao<T> {
 	@Autowired
 	 protected SessionFactory sessionFactory;
 	 
-	 protected void addEntity(T t){
+	 public void addEntity(T t){
 		 
 		 Session session = sessionFactory.getCurrentSession();
 		 session.save(t);
 	 }
 	 
-	 protected void deleteEntity(T t){
+	 public void deleteEntity(T t){
 		 
 		 Session session = sessionFactory.getCurrentSession();
 		 session.delete(t);
 	 }
 	 
-	 protected void updateEntity(T t){
+	 public void updateEntity(T t){
 		 
 		 Session session = sessionFactory.getCurrentSession();
 		 session.update(t);
@@ -37,15 +36,18 @@ public abstract class BaseDao<T> {
 
 	 
 	 @SuppressWarnings("unchecked")
-	protected T findById(int id) {
+	public T findById(int id) {
 		 Session session = sessionFactory.getCurrentSession();
 		 return (T) session.load(getPersistentClass(), id);
 	 }
 	 
-	/* public List<T> searchBasedOnInput(String search){
-		 Criteria criteria = sessionFactory.getCurrentSession().createCriteria(getPersistentClass());
-		 //criteria.add(Restrictions.l)
-		 //return List<T>criteria.list();
-	 }*/
+	 @SuppressWarnings("unchecked")
+	public List<T> findAllObjects(){
+		 Session session = sessionFactory.getCurrentSession();
+		 Criteria criteria = session.createCriteria(getPersistentClass());
+		 return criteria.list();
+	 }
+	 
+	
 
 }
