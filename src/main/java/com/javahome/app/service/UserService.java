@@ -1,6 +1,7 @@
 package com.javahome.app.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.javahome.app.assemblers.RoleAssembler;
 import com.javahome.app.assemblers.UserAssembler;
+import com.javahome.dao.AddressDao;
 import com.javahome.dao.RoleDao;
 import com.javahome.dao.UserDao;
+import com.javahome.dao.entity.AddressEntity;
 import com.javahome.dao.entity.RoleEntity;
 import com.javahome.dao.entity.UserEntity;
 import com.javahome.web.vo.RoleVO;
@@ -21,6 +24,8 @@ public class UserService implements IUserService {
 	private UserDao userDao;
 	@Autowired()
 	private RoleDao roleDao;
+	@Autowired
+	private AddressDao addressDao;
 	@Transactional
 	public boolean disableUser(int userId) {
 		userDao.disableUser(userId);
@@ -41,8 +46,15 @@ public class UserService implements IUserService {
 	public boolean addUser(UserVO userVO) {
 		RoleEntity roleEntity = roleDao.findById(userVO.getRoleId());
 		UserEntity userEntity = UserAssembler.fromUserVO(userVO);
+		Collection<AddressEntity> addressEntities = userEntity.getAddresses();
+		userEntity.setAddresses(new ArrayList<AddressEntity>());
 		userEntity.setRoleEntity(roleEntity);
 		userDao.addEntity(userEntity);
+		for(AddressEntity addressEntity : addressEntities){
+			addressEntity.setUserEntity(userEntity);
+			userEntity.getAddresses().add(addressEntity);		
+			addressDao.addEntity(addressEntity);
+		}
 		return true;
 	}
 

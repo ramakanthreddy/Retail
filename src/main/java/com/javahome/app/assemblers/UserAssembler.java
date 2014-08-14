@@ -21,7 +21,6 @@ public class UserAssembler {
 			addressEntity.setCity(userVO.getCity());
 			addressEntity.setState(userVO.getState());
 			addressEntity.setStreet(userVO.getStreet());
-			addressEntity.setUserEntity(userEntity);
 			List<AddressEntity> addresses = new ArrayList<AddressEntity>();
 			addresses.add(addressEntity);
 			userEntity.setAddresses(addresses);

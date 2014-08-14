@@ -1,5 +1,6 @@
 package com.javahome.dao.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,12 +17,13 @@ public class AddressEntity {
 	@Id
 /*	@SequenceGenerator(name="addressIdSeq",sequenceName="address_id_seq",initialValue=1)
 	@GeneratedValue(generator="addressIdSeq",strategy=GenerationType.AUTO)*/
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int addressId;
 	private String street;
 	private String state;
 	private String city;
-	@ManyToOne(targetEntity=UserEntity.class,optional=false,fetch=FetchType.EAGER)
-	@JoinColumn(name="userid")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="usersid",nullable=false)
 	private UserEntity userEntity;
 	public int getAddressId() {
 		return addressId;

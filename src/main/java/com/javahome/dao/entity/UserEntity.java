@@ -2,6 +2,7 @@ package com.javahome.dao.entity;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,6 +21,7 @@ import javax.persistence.Table;
 public class UserEntity {
 	@Id
 	@Column(name="usersid")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 /*	@SequenceGenerator(name="userIdSeq",sequenceName="user_id_seq",initialValue=1)
 	@GeneratedValue(generator="userIdSeq",strategy=GenerationType.AUTO)*/
 	private int userId;
@@ -32,8 +34,7 @@ public class UserEntity {
 	@ManyToOne(targetEntity=RoleEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="roleid")
 	private RoleEntity roleEntity;
-	@OneToMany(targetEntity=AddressEntity.class,fetch=FetchType.LAZY)
-	@JoinTable(name="address",joinColumns={@JoinColumn(name="userid")})
+	@OneToMany(mappedBy="userEntity",fetch=FetchType.LAZY)
 	private Collection<AddressEntity> addresses;
 	public int getUserId() {
 		return userId;
