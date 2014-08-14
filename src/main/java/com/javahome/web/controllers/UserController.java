@@ -22,10 +22,20 @@ public class UserController {
 		if(result) return "sucess";else return "failure";	
 	}
 	
+	@RequestMapping(value={"addUser"},method=RequestMethod.GET)
 	public String getAddUserHomePage(Model model){
 		
 		UserVO userVO = new UserVO();
+		model.addAttribute("collectionOfRoles", userService.findAllRoles());
 		model.addAttribute("userCommand", userVO);
+		
+		return "user/addUser";
+		
+	}
+	
+	@RequestMapping(value={"addUser"},method=RequestMethod.POST)
+	public String getUserDetails(@ModelAttribute("userCommand") UserVO userVO){
+		userService.addUser(userVO);
 		
 		return "user/addUser";
 		

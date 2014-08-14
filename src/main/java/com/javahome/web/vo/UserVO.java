@@ -79,6 +79,14 @@ public class UserVO {
 	public void setRoleType(String roleType) {
 		this.roleType = roleType;
 	}
+	@Override
+	public String toString() {
+		return "UserVO [firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", screenName=" + screenName
+				+ ", password=" + password + ", street=" + street + ", state="
+				+ state + ", city=" + city + ", mobile=" + mobile + ", roleId="
+				+ roleId + ", roleType=" + roleType + "]";
+	}
 	
 	
 
