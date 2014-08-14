@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.javahome</groupId>
-	<artifactId>RetailProject</artifactId>
+	<artifactId>ojdbc14</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -48,7 +48,12 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-
+<!-- 		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.4.0</version>
+		</dependency> -->
+		
 		<dependency> <!-- MySQL database driver -->
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -87,6 +92,7 @@
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>RetailProject</finalName>
@@ -95,7 +101,7 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
-					<url>http://127.0.0.1:8080/manager</url>
+					<url>http://127.0.0.1:8081/manager</url>
 					<server>TomcatServer</server>
 					<path>/RetailProject</path>
 				</configuration>

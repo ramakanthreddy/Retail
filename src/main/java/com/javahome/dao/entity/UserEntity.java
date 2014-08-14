@@ -1,82 +1,71 @@
 package com.javahome.dao.entity;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
-@Entity
+@Entity(name="usersEntity")
 @Table(name="users")
-
 public class UserEntity {
-	
-	
 	@Id
-	@Column(name="userid")
-	private String usersid;
-	
+	@Column(name="usersid")
+	@SequenceGenerator(name="userIdSeq",sequenceName="user_id_seq")
+	@GeneratedValue(generator="userIdSeq",strategy=GenerationType.SEQUENCE)
+	private int userId;
 	@Column(name="usersname")
-	private String usersname;
-	
-	@Column(name="passsword")
-	private String passsword;
-	
-	@Column(name="mobile")
+	private String userName;
+	private String password;
 	private String mobile;
-	
 	@Column(name="enable_flag")
-	private String enable_flag;
-	
-	@Column(name="roleid")
-	private String roleid;
-
-	public String getUsersid() {
-		return usersid;
+	private String enableFlag;
+	@ManyToOne(targetEntity=RoleEntity.class,fetch=FetchType.EAGER)
+	private RoleEntity roleEntity;
+	public int getUserId() {
+		return userId;
 	}
-
-	public void setUsersid(String usersid) {
-		this.usersid = usersid;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-
-	public String getUsersname() {
-		return usersname;
+	public String getUserName() {
+		return userName;
 	}
-
-	public void setUsersname(String usersname) {
-		this.usersname = usersname;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-
-	public String getPasssword() {
-		return passsword;
+	public String getPassword() {
+		return password;
 	}
-
-	public void setPasssword(String passsword) {
-		this.passsword = passsword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
 	public String getMobile() {
 		return mobile;
 	}
-
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-
-	public String getEnable_flag() {
-		return enable_flag;
+	public String getEnableFlag() {
+		return enableFlag;
 	}
-
-	public void setEnable_flag(String enable_flag) {
-		this.enable_flag = enable_flag;
+	public void setEnableFlag(String enableFlag) {
+		this.enableFlag = enableFlag;
 	}
-
-	public String getRoleid() {
-		return roleid;
+	public RoleEntity getRoleEntity() {
+		return roleEntity;
 	}
-
-	public void setRoleid(String roleid) {
-		this.roleid = roleid;
+	public void setRoleEntity(RoleEntity roleEntity) {
+		this.roleEntity = roleEntity;
 	}
+	
+	
+
 
 }
