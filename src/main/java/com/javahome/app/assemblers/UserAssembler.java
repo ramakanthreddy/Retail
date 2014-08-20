@@ -28,5 +28,16 @@ public class UserAssembler {
 		}
 		return userEntity;
 	}
+	
+	public static UserVO fromUserEntity(UserEntity userEntity)
+	{
+		UserVO userVO = new UserVO();
+		
+		if(userEntity != null)
+		{
+			userVO.setScreenName(userEntity.getUserName());
+		}
+		return userVO;
+	}
 
 }

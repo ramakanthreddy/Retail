@@ -4,9 +4,10 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-		 <property name="hbm2ddl.auto">update</property> 
+	 <property name="hbm2ddl.auto">update</property>
 		<property name="show_sql">true</property>
-
-  <mapping class="com.sample.flow.UserEntity"/>
+		<mapping class="com.javahome.dao.entity.UserEntity"/>
+		<mapping class="com.javahome.dao.entity.AddressEntity"/>
+		<mapping class="com.javahome.dao.entity.RoleEntity"/>
 	</session-factory>
 </hibernate-configuration>

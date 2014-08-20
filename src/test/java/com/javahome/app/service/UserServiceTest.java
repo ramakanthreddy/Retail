@@ -22,7 +22,7 @@ public class UserServiceTest {
    userVO.setEmail("javahome@javahome.com");
    userVO.setMobile("8884035968");
    userVO.setPassword("josya");
-   userVO.setRoleId(1);
+   userVO.setRoleId(10);
    userVO.setScreenName("ADMIN USER");
    userVO.setStreet("Munekollala");
    userVO.setCity("Bangalore");

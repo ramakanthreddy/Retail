@@ -17,7 +17,7 @@ public interface IUserService {
 	
 	boolean addUser(UserVO userVO);
 	
-
+	List<UserVO> findUsers();
 	
 	
 

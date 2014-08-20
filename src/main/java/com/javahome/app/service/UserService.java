@@ -57,5 +57,17 @@ public class UserService implements IUserService {
 		}
 		return true;
 	}
+	@Override
+	@Transactional
+	public List<UserVO> findUsers()
+	{
+		List<UserEntity> userEntities = userDao.findAllObjects();
+		List<UserVO> userVOObjects = new ArrayList<UserVO>();
+		for(UserEntity userEntity : userEntities)
+		{
+			userVOObjects.add(UserAssembler.fromUserEntity(userEntity));
+		}
+		return userVOObjects;
+	}
 
 }

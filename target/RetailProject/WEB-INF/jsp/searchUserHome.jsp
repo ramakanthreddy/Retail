@@ -10,10 +10,11 @@
 <body>
 <div style="background: green;width:1000px;length:1000px">
 <form:form action="searchUserResult.htm" commandName="searchUser">
-<h3>Enter User:</h3><form:input path="usersname"/>
+<h3>Enter User:</h3><form:input path="screenName"/>
 <input type="submit" value="search user"/>
-
 </form:form>
+</div>
+<div id="responseData">
 </div>
 </body>
 </html>
