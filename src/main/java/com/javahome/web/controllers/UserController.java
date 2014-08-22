@@ -59,7 +59,7 @@ public class UserController {
 	
 	/*@RequestMapping(value="searchUser",method=RequestMethod.GET)
 	public String searchUser(){
-		return "user/searchUser";
+		return "searchUser";
 		
 	}
 	
