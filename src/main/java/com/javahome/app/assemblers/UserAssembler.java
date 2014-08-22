@@ -28,6 +28,15 @@ public class UserAssembler {
 		}
 		return userEntity;
 	}
+	public static UserEntity fromSearchUserVO(UserVO userVO)
+	{
+		UserEntity userEntity = new UserEntity();
+		if(userVO.getScreenName()!=null)
+		{
+			userEntity.setUserName(userVO.getScreenName());
+		}
+		return userEntity;
+	}
 	
 	public static UserVO fromUserEntity(UserEntity userEntity)
 	{

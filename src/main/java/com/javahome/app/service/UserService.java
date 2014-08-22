@@ -20,9 +20,9 @@ import com.javahome.web.vo.RoleVO;
 import com.javahome.web.vo.UserVO;
 @Service
 public class UserService implements IUserService {
-	@Autowired()
+	@Autowired
 	private UserDao userDao;
-	@Autowired()
+	@Autowired
 	private RoleDao roleDao;
 	@Autowired
 	private AddressDao addressDao;
@@ -57,6 +57,15 @@ public class UserService implements IUserService {
 		}
 		return true;
 	}
+	@Override
+	@Transactional
+	public boolean searchUser(UserVO userVO)
+	{
+		UserEntity userEntity = UserAssembler.fromSearchUserVO(userVO);
+		userDao.addEntity(userEntity);
+		return true;
+	}
+	
 	@Override
 	@Transactional
 	public List<UserVO> findUsers()

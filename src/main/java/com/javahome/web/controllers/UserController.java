@@ -7,23 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.javahome.web.vo.UserVO;
-
-
 import com.javahome.app.service.IUserService;
 import com.javahome.web.vo.UserVO;
-@Controller()
+@Controller
 public class UserController {
 	
-	List<String> searchData = new ArrayList<String>();
 	
-	public UserController() {
+	
+	/*public UserController() {
 		searchData.add("Munu");
 		searchData.add("Sandeep");
 		searchData.add("Donny");
@@ -31,8 +27,7 @@ public class UserController {
 		searchData.add("Nirakar");
 		searchData.add("Haritha");
 		searchData.add("Javahome");
-	}
-	
+	}*/
 	@Autowired
 	private IUserService userService;
 	
@@ -92,10 +87,25 @@ public class UserController {
 	}
 		
 	@RequestMapping(value="searchUserResult",method=RequestMethod.POST)
-		public String getUserInformation(@ModelAttribute("searchUser") UserVO searchUserVO){
-		System.out.println(searchUserVO.getScreenName());
-			
-			return "searchUserResult";	
+	@ResponseBody
+	public List<String> searchUserRequest(@RequestParam String searchUser){
+		
+		//UserService userService = new UserService();
+		List<String> searchData = new ArrayList<String>();
+		List<UserVO> users = userService.findUsers();
+		for(UserVO s:users)
+			if(s.toString().contains(searchUser))
+			{
+				searchData.add(s.toString());
+			}
+		return searchData;
 		
 	}
+		/*public String getUserInformation(@ModelAttribute("searchUser") UserVO searchUserVO){
+		System.out.println(searchUserVO.getScreenName());
+			
+			return "searchUserResult";	}*/
+
+		
+	
 }
