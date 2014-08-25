@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javahome.app.service.IUserService;
 import com.javahome.web.vo.UserVO;
+
 @Controller
 public class UserController {
 	
@@ -79,16 +80,16 @@ public class UserController {
 	}*/
 	
 
-	@RequestMapping(value="searchUserHome",method=RequestMethod.GET)
+	@RequestMapping(value={"searchUserHome"},method=RequestMethod.GET)
 	public String getHomePage(Model model){
 		model.addAttribute("searchUser", new UserVO());
 		
-		return "searchUserHome";
+		return "user/searchUserHome";
 	}
 		
 	@RequestMapping(value="searchUserResult",method=RequestMethod.POST)
 	@ResponseBody
-	public List<String> searchUserRequest(@RequestParam String searchUser){
+	public List<String> searchUserRequest(@ModelAttribute("searchUser") String searchUser){
 		
 		//UserService userService = new UserService();
 		List<String> searchData = new ArrayList<String>();
@@ -98,6 +99,7 @@ public class UserController {
 			{
 				searchData.add(s.toString());
 			}
+		System.out.println(searchData);
 		return searchData;
 		
 	}

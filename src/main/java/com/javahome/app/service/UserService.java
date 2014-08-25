@@ -20,9 +20,9 @@ import com.javahome.web.vo.RoleVO;
 import com.javahome.web.vo.UserVO;
 @Service
 public class UserService implements IUserService {
-	@Autowired
+	@Autowired()
 	private UserDao userDao;
-	@Autowired
+	@Autowired()
 	private RoleDao roleDao;
 	@Autowired
 	private AddressDao addressDao;
